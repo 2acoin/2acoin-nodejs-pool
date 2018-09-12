@@ -100,6 +100,7 @@ Community / Support
 
 #### Pools Using This Software
 
+* https://pool.2acoin.org
 * https://imaginary.stream/
 * https://graft.anypool.net/
 * https://graft.dark-mine.su/
@@ -762,6 +763,7 @@ Thanks for supporting my works on this project! If you want to make a donation t
 Credits
 ---------
 
+* [2acoin](//github.com/2acoin) - Developer on 2acoin project
 * [fancoder](//github.com/fancoder) - Developper on cryptonote-universal-pool project from which current project is forked.
 
 License

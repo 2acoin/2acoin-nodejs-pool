@@ -16,7 +16,7 @@ body {
 a {
   color: #00863B;
 }
-a:hover {
+a:hover, a:focus {
   color: #00863B;
 }
 hr {
@@ -255,6 +255,15 @@ footer > div{
 .nav-side-menu li:hover a {
   color: #fff;
 }
+
+.nav-side-menu .poolop {
+     background-color: #4c4c4c;
+     text-align: center;
+     font-weight: 800;
+     font-size: 14px;
+     color: #fff;
+}
+
 @media (max-width: 991px) {
   .nav-side-menu {
     position: relative;
