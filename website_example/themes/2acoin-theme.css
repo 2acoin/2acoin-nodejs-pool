@@ -841,7 +841,7 @@ table th.sort:hover{
     white-space: nowrap;
   }
   #workerPayments table .col1 {
-    width:190px;
+    width:192px;
   }  
   #workerPayments table .col2 {
     overflow: hidden;
@@ -891,7 +891,7 @@ table th.sort:hover{
     white-space: nowrap;
   }
   #blocksReport table .col1 {
-    width:190px;
+    width:192px;
   }  
   #blocksReport table .col2 {
     width:80px;
@@ -960,7 +960,7 @@ table th.sort:hover{
     white-space: nowrap;
   }
   #paymentsReport table .col1 {
-    width:190px;
+    width:192px;
   }  
   #paymentsReport table .col2 {
     overflow: hidden;
