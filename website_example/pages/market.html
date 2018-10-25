@@ -183,6 +183,7 @@ function renderMarketPrice(base, target, price, source) {
     else if (source == 'cryptopia') sourceURL = 'https://www.cryptopia.co.nz/';
     else if (source == 'stocks.exchange') sourceURL = 'https://stocks.exchange/';
     else if (source == 'tradeogre') sourceURL = 'https://tradeogre.com/';
+    else if (source == 'kompler') sourceURL = 'https://kompler.exchange/';
 
     source = source.charAt(0).toUpperCase() + source.slice(1);
     if (sourceURL) source = '<a href="'+sourceURL+'" target="_blank" rel="nofollow">'+source+'</a>';
