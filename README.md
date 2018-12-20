@@ -233,10 +233,10 @@ Explanation for each field:
     "clusterForks": "auto",
 
     /* Address where block rewards go, and miner payments come from. */
-    "poolAddress": "GBqRuitSoU3PFPBAkXMEnLdBRWXH4iDSD6RDxnQiEFjVJhWUi1UuqfV5EzosmaXgpPGE6JJQjMYhZZgWY8EJQn8jQTsuTit",
+    "poolAddress": "gunsRuitSoU3PFPBAkXMEnLdBRWXH4iDSD6RDxnQiEFjVJhWUi1UuqfV5EzosmaXgpPGE6JJQjMYhZZgWY8EJQn8jQTsuTiitb",
 
     /* This is the integrated address prefix used for miner login validation. */
-    "intAddressPrefix": 91,
+    "intAddressPrefix": "guns",
 
     /* Poll RPC daemons for new blocks every this many milliseconds. */
     "blockRefreshInterval": 1000,
@@ -477,10 +477,11 @@ Explanation for each field:
 /* Telegram channel notifications.
    See Telegram documentation to setup your bot: https://core.telegram.org/bots#3-how-do-i-create-a-bot */
 "telegram": {
-    "enabled": false,
+    "enabled": false, // enable or disables telegram notifications
     "botName": "", // The bot user name.
     "token": "", // The bot unique authorization token
     "channel": "", // The telegram channel id (ex: BlockHashMining)
+    "channelBlocks": false, // enable or disable telegram notifications for blocks in telegram channel
     "channelStats": {
         "enabled": false, // Enable periodical updater of pool statistics in telegram channel
         "interval": 5 // Periodical update interval (in minutes)

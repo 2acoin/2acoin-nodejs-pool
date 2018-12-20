@@ -229,6 +229,7 @@
         "botName": "",
         "token": "",
         "channel": "",
+        "channelBlocks": false,
         "channelStats": {
             "enabled": false,
             "interval": 30
