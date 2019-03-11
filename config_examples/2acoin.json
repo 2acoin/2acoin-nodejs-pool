@@ -6,10 +6,10 @@
     "coinUnits": 100000000,
     "coinDecimalPlaces": 8,
     "coinDifficultyTarget": 90,
-    "daemonType": "bytecoin",
 
-    "cnAlgorithm": "cryptonight_light",
-    "cnVariant": 1,
+    "daemonType": "2acoin",
+    "cnAlgorithm": "cryptonight-turtle-light",
+    "cnVariant": 2,
     "cnBlobType": 2,
 
     "logging": {
@@ -96,7 +96,7 @@
             "enabled": true,
             "time": 600,
             "invalidPercent": 25,
-            "checkThreshold": 30
+            "checkThreshold": 60
         },
         "slushMining": {
             "enabled": false,
@@ -110,14 +110,14 @@
         "enabled": true,
         "interval": 1800,
         "maxAddresses": 50,
-        "mixin": 1,
+        "mixin": 3,
         "priority": 0,
         "transferFee": 50000,
         "dynamicTransferFee": true,
         "minerPayFee" : true,
-        "minPayment": 1000000000,
-        "maxPayment": null,
-        "maxTransactionAmount": 0,
+        "minPayment": 500000000,
+        "maxPayment": 7500000000,
+        "maxTransactionAmount": 15000000000,
         "denomination": 10000
     },
 
@@ -125,7 +125,7 @@
         "enabled": true,
         "interval": 30,
         "depth": 30,
-        "poolFee": 0.2,
+        "poolFee": 0.0,
         "devDonation": 0.0,
         "networkFee": 0.0,
         "fixBlockHeightRPC": false
@@ -145,7 +145,7 @@
         "sslCert": "./cert.pem",
         "sslKey": "./privkey.pem",
         "sslCA": "./chain.pem",
-        "trustProxyIP": true
+        "trustProxyIP": false
     },
 
     "daemon": {
