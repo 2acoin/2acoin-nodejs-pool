@@ -8,7 +8,7 @@
     "coinDifficultyTarget": 90,
 
     "daemonType": "2acoin",
-    "cnAlgorithm": "cryptonight-turtle-light",
+    "cnAlgorithm": "cryptonight-turtle-lite",
     "cnVariant": 2,
     "cnBlobType": 2,
 
@@ -254,7 +254,7 @@
     },
 
     "prices": {
-        "source": "cryptonator",
+        "source": "firstcryptobank",
         "currency": "USD"
     },
 
