@@ -8,7 +8,7 @@
     "coinDifficultyTarget": 90,
 
     "daemonType": "2acoin",
-    "cnAlgorithm": "cryptonight-turtle-lite",
+    "cnAlgorithm": "cryptonight-armor-lite",
     "cnVariant": 2,
     "cnBlobType": 2,
 
