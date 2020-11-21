@@ -1,6 +1,6 @@
 {
     "name": "cryptonote-nodejs-pool",
-    "version": "1.4.0",
+    "version": "1.4.0.1",
     "license": "GPL-2.0",
     "Original author": "Daniel Vandal",
     "Maintained by": "2ACoin Developers",
@@ -21,12 +21,12 @@
         "nodemailer": "4.0.1",
         "nodemailer-sendmail-transport": "*",
         "redis": "^3.0.2",
-		"request": "^2.88.2",
-		"request-promise-native": "^1.0.9",
+        "request": "^2.88.2",
+        "request-promise-native": "^1.0.9",
         "socket.io": "^2.1.1",
         "time-ago": "*"
     },
     "engines": {
-        "node": ">=8.11.3"
+        "node": ">=10.23.0"
     }
 }
