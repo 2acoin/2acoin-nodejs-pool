@@ -137,7 +137,7 @@ function checkRedisVersion(callback){
             return;
         }
         else if (version < 2.6){
-            log('error', logSystem, "You're using redis version %s the minimum required version is 2.6. Follow the damn usage instructions...", [versionString]);
+            log('error', logSystem, "You're using redis version %s the minimum required version is 3.0.2 Follow the damn usage instructions...", [versionString]);
             return;
         }
         callback();
