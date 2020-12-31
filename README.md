@@ -393,8 +393,12 @@ Explanation for each field:
 
 /* Wallet daemon connection details (default port is 18980) */
 "wallet": {
+    "api": false,  //For 2acoin and other turtlecoin derived coins to use the wallet-api daemon
     "host": "127.0.0.1",
-    "port": 18982
+    "port": 18982,
+    "pass": "daemon_password",  //password set for the use of the daemon
+    "file": "/home/poolusr/wallets/my_wallet.wallet",  // absolute location/name of the wallet file to use
+    "secret": "wallet_password"  //the password for wallet commands
 },
 
 /* Redis connection info (default port is 6379) */

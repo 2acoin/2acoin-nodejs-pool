@@ -6,9 +6,9 @@
     "coinUnits": 100000000,
     "coinDecimalPlaces": 8,
     "coinDifficultyTarget": 90,
-
     "daemonType": "2acoin",
-    "cnAlgorithm": "cryptonight-armor-lite",
+
+    "cnAlgorithm": "chukwa",
     "cnVariant": 2,
     "cnBlobType": 2,
 
@@ -27,7 +27,7 @@
     "poolServer": {
         "enabled": true,
         "clusterForks": "auto",
-        "poolAddress": "** Your pool wallet address **",
+        "poolAddress": "** Your pool wallet address - guns* - **",
         "intAddressPrefix": null,
         "blockRefreshInterval": 1000,
         "minerTimeout": 900,
@@ -93,7 +93,7 @@
             "penalty": 30
         },
         "banning": {
-            "enabled": true,
+            "enabled": false,
             "time": 600,
             "invalidPercent": 25,
             "checkThreshold": 60
@@ -113,7 +113,7 @@
         "mixin": 3,
         "priority": 0,
         "transferFee": 50000,
-        "dynamicTransferFee": true,
+        "dynamicTransferFee": false,
         "minerPayFee" : true,
         "minPayment": 500000000,
         "maxPayment": 7500000000,
@@ -125,7 +125,7 @@
         "enabled": true,
         "interval": 30,
         "depth": 30,
-        "poolFee": 0.0,
+        "poolFee": 0.1,
         "devDonation": 0.0,
         "networkFee": 0.0,
         "fixBlockHeightRPC": false
@@ -154,9 +154,12 @@
     },
 
     "wallet": {
+        "api": true,
         "host": "127.0.0.1",
         "port": 17760,
-	    "password": "**WALLET RPC PASSWORD**"
+	    "pass": "**WALLET RPC PASSWORD**",
+        "file": "/home/poolusr/wallets/wallet_file.wallet",
+        "secret": "**YOUR WALLET PASSWORD **"
     },
 
     "redis": {
@@ -245,17 +248,17 @@
     
     "monitoring": {
         "daemon": {
-            "checkInterval": 60,
+            "checkInterval": 120,
             "rpcMethod": "getblockcount"
         },
         "wallet": {
-            "checkInterval": 60,
+            "checkInterval": 180,
             "rpcMethod": "getbalance"
         }
     },
 
     "prices": {
-        "source": "firstcryptobank",
+        "source": "cOINgECKO",
         "currency": "USD"
     },
 
@@ -287,13 +290,13 @@
             },
             "price": {
                 "enabled": true,
-                "updateInterval": 1800,
+                "updateInterval": 180,
                 "stepInterval": 10800,
                 "maximumPeriod": 604800
             },
             "profit": {
                 "enabled": true,
-                "updateInterval": 1800,
+                "updateInterval": 180,
                 "stepInterval": 10800,
                 "maximumPeriod": 604800
             }
