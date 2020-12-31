@@ -113,7 +113,6 @@
         "mixin": 3,
         "priority": 0,
         "transferFee": 50000,
-        "dynamicTransferFee": false,
         "minerPayFee" : true,
         "minPayment": 500000000,
         "maxPayment": 7500000000,
