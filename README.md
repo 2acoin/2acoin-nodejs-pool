@@ -69,6 +69,8 @@ Features
 * Control transactions priority with config.payments.priority (default: 0).
 * Set payment ID on miner client when using "[address].[paymentID]" login
 * Integrated payment ID addresses support for Exchanges
+* Added ability to use 2acoin-service or wallet-api(recommended)
+* Supports Fee per Byte processing with either pool or miner paying the xfer fee
 
 #### Admin panel
 * Aggregated pool statistics
