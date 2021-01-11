@@ -156,7 +156,7 @@
         "api": true,
         "host": "127.0.0.1",
         "port": 17760,
-	    "pass": "**WALLET RPC PASSWORD**",
+        "pass": "**WALLET RPC PASSWORD**",
         "file": "/home/poolusr/wallets/wallet_file.wallet",
         "secret": "**YOUR WALLET PASSWORD **"
     },
