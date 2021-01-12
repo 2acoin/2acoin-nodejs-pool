@@ -1,7 +1,7 @@
-cryptonote-nodejs-pool
+2acoin-nodejs-pool (a fork of cyptonote-nodejs-pool)
 ======================
 
-High performance Node.js (with native C addons) mining pool for CryptoNote based coins. Comes with lightweight example front-end script which uses the pool's AJAX API. Support for Cryptonight (Original, Monero v7, Stellite v7), Cryptonight Light (Original, Aeon v7, IPBC) and Cryptonight Heavy (Sumokoin) algorithms.
+High performance Node.js (with native C addons) mining pool for CryptoNote based coins. Comes with lightweight example front-end script which uses the pool's AJAX API. Support for Cryptonight (Original, Monero v7, Stellite v7), Cryptonight Light (Original, Aeon v7, IPBC) and Cryptonight Heavy (Sumokoin) algorithms. 2acoin-nodejs-pool has been forked and modified specifically for support of mining 2ACoin ARMS.
 
 
 #### Table of Contents
@@ -117,13 +117,13 @@ Usage
 #### Requirements
 * Coin daemon(s) (find the coin's repo and build latest version from source)
   * [List of Cryptonote coins](https://github.com/dvandal/cryptonote-nodejs-pool/wiki/Cryptonote-Coins)
-* [Node.js](http://nodejs.org/) v4.0+
+* [Node.js](http://nodejs.org/) v8.0+
   * For Ubuntu: 
  ```
   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash
   sudo apt-get install -y nodejs
 ```
-* [Redis](http://redis.io/) key-value store v2.6+ 
+* [Redis](http://redis.io/) key-value store v3.0.2+ 
   * For Ubuntu: 
 ```
 sudo add-apt-repository ppa:chris-lea/redis-server
@@ -158,7 +158,7 @@ sudo su - your-user
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/dvandal/cryptonote-nodejs-pool.git pool
+git clone https://github.com/2acoin/cryptonote-nodejs-pool.git pool
 cd pool
 
 npm update
@@ -174,31 +174,31 @@ Explanation for each field:
 "poolHost": "your.pool.host",
 
 /* Used for storage in redis so multiple coins can share the same redis instance. */
-"coin": "graft",
+"coin": "2ACoin",
 
 /* Used for front-end display */
-"symbol": "GRFT",
+"symbol": "ARMS",
 
 /* Minimum units in a single coin, see COIN constant in DAEMON_CODE/src/cryptonote_config.h */
-"coinUnits": 10000000000,
+"coinUnits": 100000000,
 
 /* Number of coin decimals places for notifications and front-end */
-"coinDecimalPlaces": 4,
+"coinDecimalPlaces": 8,
   
 /* Coin network time to mine one block, see DIFFICULTY_TARGET constant in DAEMON_CODE/src/cryptonote_config.h */
-"coinDifficultyTarget": 120,
+"coinDifficultyTarget": 90,
 
 /* Set daemon type. Supported values: default, forknote (Fix block height + 1), bytecoin (ByteCoin Wallet RPC API) */
-"daemonType": "default",
+"daemonType": "2acoin",
 
 /* Set Cryptonight algorithm settings.
    Supported algorithms: cryptonight (default). cryptonight_light and cryptonight_heavy
    Supported variants for "cryptonight": 0 (Original), 1 (Monero v7), 3 (Stellite / XTL)
    Supported variants for "cryptonight_light": 0 (Original), 1 (Aeon v7), 2 (IPBC)
    Supported blob types: 0 (Cryptonote), 1 (Forknote v1), 2 (Forknote v2), 3 (Cryptonote v2 / Masari) */
-"cnAlgorithm": "cryptonight",
-"cnVariant": 1,
-"cnBlobType": 0,
+"cnAlgorithm": "chukwa",
+"cnVariant": 2,
+"cnBlobType": 2,
 
 /* Logging */
 "logging": {
@@ -235,7 +235,7 @@ Explanation for each field:
     "clusterForks": "auto",
 
     /* Address where block rewards go, and miner payments come from. */
-    "poolAddress": "gunsRuitSoU3PFPBAkXMEnLdBRWXH4iDSD6RDxnQiEFjVJhWUi1UuqfV5EzosmaXgpPGE6JJQjMYhZZgWY8EJQn8jQTsuTiitb",
+    "poolAddress": "** Your pool wallet address - guns* - **",
 
     /* This is the integrated address prefix used for miner login validation. */
     "intAddressPrefix": "guns",
@@ -253,23 +253,24 @@ Explanation for each field:
     "ports": [
         {
             "port": 3333, // Port for mining apps to connect to
-            "difficulty": 2000, // Initial difficulty miners are set to
-            "desc": "Low end hardware" // Description of port
+            "difficulty": 5000, // Initial difficulty miners are set to
+            "desc": "CPU - (30-40 H/s)" // Description of port
         },
         {
             "port": 4444,
             "difficulty": 15000,
-            "desc": "Mid range hardware"
+            "desc": "Mid range hardware",
+			"hidden": true  // Hide this port in the front end
         },
         {
             "port": 5555,
             "difficulty": 25000,
-            "desc": "High end hardware"
+            "desc": "CPU (50-200H/s)"
         },
         {
             "port": 7777,
             "difficulty": 500000,
-            "desc": "Cloud-mining / NiceHash"
+            "desc": "CPU/GPU (>300 H/s)"
         },
         {
             "port": 8888,
@@ -297,15 +298,15 @@ Explanation for each field:
         "maxJump": 100 // Limit diff percent increase/decrease in a single retargeting
     },
 	
-    /* Set difficulty on miner client side by passing <address> param with +<difficulty> postfix */
+    /* Set difficulty on miner client side by passing <address> param with .<difficulty> postfix */
     "fixedDiff": {
         "enabled": true,
-        "separator": "+", // Character separator between <address> and <difficulty>
+        "separator": ".", // Character separator between <address> and <difficulty>
     },
 
-    /* Set payment ID on miner client side by passing <address>.<paymentID> */
+    /* Set payment ID on miner client side by passing <address>+<paymentID> */
     "paymentId": {
-        "addressSeparator": "." // Character separator between <address> and <paymentID>
+        "addressSeparator": "+" // Character separator between <address> and <paymentID>
     },
 
     /* Feature to trust share difficulties from miners which can
@@ -337,16 +338,16 @@ Explanation for each field:
 /* Module that sends payments to miners according to their submitted shares. */
 "payments": {
     "enabled": true,
-    "interval": 300, // How often to run in seconds
+    "interval": 1800, // How often to run in seconds
     "maxAddresses": 50, // Split up payments if sending to more than this many addresses
-    "mixin": 5, // Number of transactions yours is indistinguishable from
+    "mixin": 3, // Number of transactions yours is indistinguishable from
     "priority": 0, // The transaction priority    
-    "transferFee": 4000000000, // Fee to pay for each transaction
-    "minerPayFee" : true, // Miner pays the transfer fee instead of pool owner when using dynamic transfer fee
-    "minPayment": 100000000000, // Miner balance required before sending payment
-    "maxPayment": null, // Maximum miner balance allowed in miner settings
-    "maxTransactionAmount": 0, // Split transactions by this amount (to prevent "too big transaction" error)
-    "denomination": 10000000000 // Truncate to this precision and store remainder
+    "transferFee": 50000, // Fee to pay for each transaction
+    "minerPayFee" : true, // Miner pays the transfer fee instead of pool owner (support Fee per Byte)
+    "minPayment": 500000000, // Miner balance required before sending payment
+    "maxPayment": 7500000000, // Maximum miner balance allowed in miner settings ("null" to disable)
+    "maxTransactionAmount": 15000000000, // Split transactions by this amount (to prevent "too big transaction" error)
+    "denomination": 10000 // Truncate to this precision and store remainder
 },
 
 /* Module that monitors the submitted block maturities and manages rounds. Confirmed
@@ -372,14 +373,14 @@ Explanation for each field:
 "api": {
     "enabled": true,
     "hashrateWindow": 600, // How many second worth of shares used to estimate hash rate
-    "updateInterval": 3, // Gather stats and broadcast every this many seconds
+    "updateInterval": 5, // Gather stats and broadcast every this many seconds
     "bindIp": "0.0.0.0", // Bind API to a specific IP (set to 0.0.0.0 for all)
-    "port": 8117, // The API port
+    "port": 19760, // The API port
     "blocks": 30, // Amount of blocks to send at a time
     "payments": 30, // Amount of payments to send at a time
     "password": "your_password", // Password required for admin stats
     "ssl": false, // Enable SSL API
-    "sslPort": 8119, // The SSL port
+    "sslPort": 19761, // The SSL port
     "sslCert": "./cert.pem", // The SSL certificate
     "sslKey": "./privkey.pem", // The SSL private key
     "sslCA": "./chain.pem", // The SSL certificate authority chain
@@ -389,14 +390,14 @@ Explanation for each field:
 /* Coin daemon connection details (default port is 18981) */
 "daemon": {
     "host": "127.0.0.1",
-    "port": 18981
+    "port": 17910
 },
 
 /* Wallet daemon connection details (default port is 18980) */
 "wallet": {
-    "api": false,  //For 2acoin and other turtlecoin derived coins to use the wallet-api daemon
+    "api": true,  //For 2acoin and other turtlecoin derived coins to use the wallet-api daemon set to "true"
     "host": "127.0.0.1",
-    "port": 18982,
+    "port": 17760,
     "pass": "daemon_password",  //password set for the use of the daemon
     "file": "/home/poolusr/wallets/my_wallet.wallet",  // absolute location/name of the wallet file to use
     "secret": "wallet_password"  //the password for wallet commands
@@ -512,7 +513,7 @@ Explanation for each field:
 
 /* Prices settings for market and price charts */
 "prices": {
-    "source": "cryptonator", // Exchange (supported values: cryptonator, altex, crex24, cryptopia, stocks.exchange, tradeogre)
+    "source": "CoinGecko", // Exchange (supported values: cryptonator, altex, crex24, cryptopia, stocks.exchange, tradeogre, coingecko)
     "currency": "USD" // Default currency
 },
 	    
@@ -562,6 +563,12 @@ Explanation for each field:
             "enabled": true,
             "updateInterval": 180,
             "stepInterval": 1800,
+            "maximumPeriod": 86400
+        },
+        "worker_hashrate": {
+            "enabled": true,
+            "updateInterval": 60,
+            "stepInterval": 60,
             "maximumPeriod": 86400
         },
         "payments": { // Payment chart uses all user payments data stored in DB
@@ -623,13 +630,13 @@ Variable explanations:
 ```javascript
 
 /* Must point to the API setup in your config.json file. */
-var api = "http://poolhost:8117";
+var api = "http://poolhost:17960";
 
 /* Pool server host to instruct your miners to point to (override daemon setting if set) */
 var poolHost = "poolhost.com";
 
 /* Number of coin decimals places (override daemon setting if set) */
-"coinDecimalPlaces": 4,
+"coinDecimalPlaces": 8,
 
 /* Contact email address. */
 var email = "support@poolhost.com";
@@ -644,10 +651,10 @@ var discord = "https://discordapp.com/invite/YourPool";
 var marketCurrencies = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR", "{symbol}-CAD"];
 
 /* Used for front-end block links. */
-var blockchainExplorer = "http://chainradar.com/{symbol}/block/{id}";
+var blockchainExplorer = "https://explorer.2acoin.org?hash={id}#blockchain_block";
 
 /* Used by front-end transaction links. */
-var transactionExplorer = "http://chainradar.com/{symbol}/transaction/{id}";
+var transactionExplorer = "https://explorer.2acoin.org?hash={id}#blockchain_transaction";
 
 /* Any custom CSS theme for pool frontend */
 var themeCss = "themes/light.css";
@@ -674,13 +681,13 @@ You can configure the API to be accessible via SSL using various methods. Find a
 * Using SSL api in `config.json`:
 
 By using this you will need to update your `api` variable in the `website_example/config.js`. For example:  
-`var api = "https://poolhost:8119";`
+`var api = "https://poolhost:19760";`
 
 * Inside your SSL Listener, add the following:
 
 ``` javascript
 location ~ ^/api/(.*) {
-    proxy_pass http://127.0.0.1:8117/$1$is_args$args;
+    proxy_pass http://127.0.0.1:19760/$1$is_args$args;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 ```
@@ -703,7 +710,7 @@ server {
 
     location / {
         more_set_headers 'Access-Control-Allow-Origin: *';
-        proxy_pass http://127.0.01:8117;
+        proxy_pass http://127.0.01:19760;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -738,7 +745,7 @@ Documentation for JSON-RPC commands can be found here:
 Curl can be used to use the JSON-RPC commands from command-line. Here is an example of calling `getblockheaderbyheight` for block 100:
 
 ```bash
-curl 127.0.0.1:18081/json_rpc -d '{"method":"getblockheaderbyheight","params":{"height":100}}'
+curl 127.0.0.1:17910/json_rpc -d '{"method":"getblockheaderbyheight","params":{"height":100}}'
 ```
 
 
@@ -752,8 +759,9 @@ curl 127.0.0.1:18081/json_rpc -d '{"method":"getblockheaderbyheight","params":{"
 Donations
 ---------
 
-Thanks for supporting my works on this project! If you want to make a donation to [Daniel Vandal](https://github.com/dvandal/), the developper of this project, you can send any amount of your choice to one of theses addresses:
+Thanks for supporting my works on this project! If you want to make a donation to [Daniel Vandal](https://github.com/dvandal/), the developer of this project, you can send any amount of your choice to one of theses addresses:
 
+* 2ACoin (ARMS): `gunsAuLW8PiYvmo7Xpumv1gtxFer3oVF85y1gSFFrrNiBgwRwfAnxKCetKshW3kcMShrNvMs33qCpEqziaRjxG1Q7HBeWN9pbq`
 * Bitcoin (BTC): `17XRyHm2gWAj2yfbyQgqxm25JGhvjYmQjm`
 * Bitcoin Cash (BCH): `qpl0gr8u3yu7z4nzep955fqy3w8m6w769sec08u3dp`
 * Ethereum (ETH): `0x83ECF65934690D132663F10a2088a550cA201353`
