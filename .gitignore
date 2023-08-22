@@ -6,3 +6,6 @@ build/
 logs/
 website/
 my_config/
+pool.pid
+.well-known
+lib/.apiInterfaces.js.swp

@@ -11,11 +11,13 @@
     "dependencies": {
         "2acoin-cryptonote-util": "0.0.9",
         "2acoin-multi-hashing": "*",
+        "turtlecoin-utils": "0.0.13",
         "async": "1",
         "base58-native": "*",
         "bignum": "^0.13.1",
         "cli-color": "*",
         "dateformat": "*",
+        "domexception": "^2.0.1",
         "mailgun.js": "*",
         "node-telegram-bot-api": "^0.50.0",
         "nodemailer": "4.0.1",
